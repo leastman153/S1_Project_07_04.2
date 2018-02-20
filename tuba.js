@@ -55,19 +55,25 @@ function verifyCrops() {
   // Try to check if there isn't a checked box and throw an error and catch it
   // and send a message to the user if there isn't any checked boxes in the crops
   // sections
-  try{ for (var i = 0; i < 7; i++) {
-  if
-  (cropsFieldset.getElementsByTagName("input")[i]. checked) { cropscomplete = true; messageElement.innerHTML = ""; // clear previous
-  message or recommendation
-  testFormCompleteness(); i=8;
-  } if (i === 7) {
-  throw "Please select at least one crop.";
-  }
-  }
-  catch(message) {
-  cropsComplete = false; messageHeadElement.innerHTML = "";
-  // remove any former recommendation heading messageElement.innerHTML = message; // display error
-  Message
+  try{
+    for (var i = 0; i < 7; i++) {
+      if (cropsFieldset.getElementsByTagName("input")[i].checked) {
+        cropsComplete = true;
+        messageElement.innerHTML = "";
+        // clear previous message or recommendation
+        testFormCompleteness();
+        i = 8;
+      }
+      if (i === 6) {
+        throw "Please select at least one crop.";
+      }
+    }
+  } catch(message) {
+    cropsComplete = false;
+    messageHeadElement.innerHTML = "";
+    // remove any former recommendation heading
+    messageElement.innerHTML = message;
+    // display error message
   }
 }
 
