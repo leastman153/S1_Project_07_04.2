@@ -34,6 +34,7 @@ function verifyAcres() {
     // testFormCompleteness();
     var validity = true;
     var messageText = "";
+    // alert("Acres: " + acresBox.value);
     try {
       if(!(acresBox.value > 0)) {
         throw "Please enter a number of acres greater than 0.";
@@ -55,14 +56,15 @@ function verifyCrops() {
   // Try to check if there isn't a checked box and throw an error and catch it
   // and send a message to the user if there isn't any checked boxes in the crops
   // sections
-  try{
+  try {
     for (var i = 0; i < 7; i++) {
       if (cropsFieldset.getElementsByTagName("input")[i].checked) {
         cropsComplete = true;
         messageElement.innerHTML = "";
         // clear previous message or recommendation
+        // alert(cropsFieldset.getElementsByTagName("input")[i].value);
         testFormCompleteness();
-        i = 8;
+        break;a
       }
       if (i === 6) {
         throw "Please select at least one crop.";
@@ -82,7 +84,7 @@ function verifyMonths() {
     // testFormCompleteness();
     var validity = true;
     var messageText = "";
-
+    alert(monthsBox.value);
     try {
       if(!(monthsBox.value >= 1 && monthsBox.value <= 12)) {
         throw "Please enter a number of months between 1 and 12.";
@@ -92,7 +94,7 @@ function verifyMonths() {
       messageText = message;
       monthsBox.value = ""; // Remove erroneous input from value
     } finally {
-      acresComplete = validity;
+      monthsComplete = validity;
       messageElement.innerHTML = messageText;
       messageHeadElement.innerHTML = ""; // Remove any former recommendation headings
       testFormCompleteness();
@@ -106,9 +108,21 @@ function verifyFuel() {
 
 /* check if all four form sections are completed */
 function testFormCompleteness() {
-    if (acresComplete && cropsComplete && monthsComplete && fuelComplete) {
-        createRecommendation();
-    }
+  // if(acresComplete) {
+  //   alert("Acres complete");
+  // }
+  // if(cropsComplete) {
+  //   alert("Crops complete");
+  // }
+  // if(fuelComplete) {
+  //   alert("Crops complete");
+  // }
+  // if(monthsComplete) {
+  //   alert("Months complete");
+  // }
+  if (acresComplete && cropsComplete && monthsComplete && fuelComplete) {
+    createRecommendation();
+  }
 }
 
 /* generate tractor recommendation based on user selections */
