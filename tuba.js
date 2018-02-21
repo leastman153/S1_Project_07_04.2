@@ -58,13 +58,16 @@ function verifyCrops() {
   // sections
   try {
     for (var i = 0; i < 7; i++) {
+      // Fixed syntax errors in which var names and other code was written incorrectly
       if (cropsFieldset.getElementsByTagName("input")[i].checked) {
         cropsComplete = true;
         messageElement.innerHTML = "";
         // clear previous message or recommendation
         // alert(cropsFieldset.getElementsByTagName("input")[i].value);
         testFormCompleteness();
-        break;a
+        // Changed i = 8 to break in order to exit the loop when a checked box
+        // is found.
+        break;
       }
       if (i === 6) {
         throw "Please select at least one crop.";
@@ -72,6 +75,7 @@ function verifyCrops() {
     }
   } catch(message) {
     cropsComplete = false;
+    // Distinguished code from comments in order to have the correct code running
     messageHeadElement.innerHTML = "";
     // remove any former recommendation heading
     messageElement.innerHTML = message;
@@ -94,6 +98,7 @@ function verifyMonths() {
       messageText = message;
       monthsBox.value = ""; // Remove erroneous input from value
     } finally {
+
       monthsComplete = validity;
       messageElement.innerHTML = messageText;
       messageHeadElement.innerHTML = ""; // Remove any former recommendation headings
@@ -108,6 +113,9 @@ function verifyFuel() {
 
 /* check if all four form sections are completed */
 function testFormCompleteness() {
+  // Used alert messages to identify which complete variables were not being set
+  // to true.
+
   // if(acresComplete) {
   //   alert("Acres complete");
   // }
